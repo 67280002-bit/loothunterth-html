@@ -1,0 +1,150 @@
+/* ==========================================================
+   LootHuntersTH – สไตล์ทั้งหมดของเว็บไซต์ (CSS ล้วน ไม่ใช้ JavaScript)
+   แก้สีและธีมที่ตัวแปรใน :root ด้านล่างที่เดียว แล้วทั้งเว็บเปลี่ยนตาม
+   ========================================================== */
+
+/* ---------- 1) ตัวแปรสี ---------- */
+:root {
+  --bg:#eef1f6; --surface:#ffffff; --ink:#1b1f3b; --muted:#5b6280; --line:#d6dbe8;
+  --pk:#f4b400; --op:#c8372d; --accent:#2f5bea;     /* สีประจำเกม และสีเน้น */
+  --btn:#1b1f3b; --btn-text:#ffffff; --ok:#12805c;
+  --radius:12px;
+}
+/* โหมดมืด: ใช้ตามค่าตั้งของอุปกรณ์อัตโนมัติ */
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#12142a; --surface:#1c2040; --ink:#eef0fa; --muted:#a3a9c8; --line:#2e3459;
+          --btn:#f4b400; --btn-text:#1b1f3b; --ok:#4cc79a; }
+}
+
+/* ---------- 2) พื้นฐาน ---------- */
+*, *::before, *::after { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 Sarabun, system-ui, sans-serif; }
+h1, h2, h3 { font-family:Kanit, Sarabun, sans-serif; line-height:1.25; margin:0 0 .4em; }
+h1 { font-size:clamp(28px,5vw,40px); } h2 { font-size:24px; } h3 { font-size:18px; }
+a { color:inherit; } img { max-width:100%; }
+:focus-visible { outline:3px solid var(--accent); outline-offset:2px; }
+.sr { position:absolute; opacity:0; width:1px; height:1px; pointer-events:none; }   /* ซ่อนจากสายตา แต่โฟกัสด้วยคีย์บอร์ดได้ */
+.skip { position:absolute; left:-999px; } .skip:focus { left:8px; top:8px; background:var(--surface); padding:8px 12px; z-index:20; }
+.wrap { max-width:1040px; margin:0 auto; padding:24px 18px; }
+.narrow { max-width:560px; }
+.wrap > h2 { margin-top:28px; }
+.center { text-align:center; }
+.sub, .meta, .note { color:var(--muted); } .sub { margin:0 0 18px; } .meta { font-size:14px; margin:0; } .note { font-size:14px; margin:8px 0 0; }
+.two { display:grid; gap:28px; grid-template-columns:1.1fr .9fr; align-items:center; }
+.three { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+@media (max-width:760px) { .two { grid-template-columns:1fr; } }
+
+/* ---------- 3) ส่วนหัวและเมนู ---------- */
+header.site { position:sticky; top:0; z-index:10; background:var(--surface); border-bottom:1px solid var(--line); }
+.bar { display:flex; align-items:center; gap:14px; padding-top:10px; padding-bottom:10px; flex-wrap:wrap; }
+.logo { margin-right:auto; display:block; } .logo img { display:block; height:46px; width:auto; border-radius:8px; }
+nav ul { list-style:none; display:flex; gap:18px; margin:0; padding:0; }
+nav a { text-decoration:none; color:var(--muted); font-size:15px; }
+nav a:hover, nav a[aria-current] { color:var(--ink); font-weight:600; }
+.acts { display:flex; gap:8px; }
+.burger { display:none; cursor:pointer; font-size:24px; line-height:1; padding:4px 8px; }
+@media (max-width:760px) {
+  .burger { display:block; }
+  nav { display:none; order:5; width:100%; }
+  #menu:checked ~ nav { display:block; }                    /* เมนูมือถือเปิด-ปิดด้วย checkbox + CSS */
+  nav ul { flex-direction:column; gap:8px; padding:6px 0; }
+}
+
+/* ---------- 4) ปุ่ม ---------- */
+.btn { display:inline-block; background:var(--btn); color:var(--btn-text); border:2px solid var(--btn); border-radius:8px;
+        padding:8px 16px; font:600 15px Sarabun, sans-serif; text-decoration:none; cursor:pointer; }
+.btn.ghost { background:none; color:var(--ink); border-color:var(--ink); }
+.btn.sm { padding:5px 12px; font-size:14px; } .btn.lg { padding:11px 22px; font-size:16px; }
+.btn.block { display:block; width:100%; text-align:center; }
+.btn:hover { filter:brightness(1.12); }
+
+/* ---------- 5) หน้าแรก ---------- */
+.hero { padding:20px 0 6px; } .hero p { color:var(--muted); max-width:46ch; }
+.heroimg { width:100%; height:auto; aspect-ratio:3/2; object-fit:cover; border-radius:var(--radius); box-shadow:0 8px 24px rgba(20,20,50,.2); }
+.pk { --c:var(--pk); } .op { --c:var(--op); }
+.games { list-style:none; display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); padding:0; margin:0; }
+.gcard { display:block; text-align:center; padding:28px 10px; border-radius:var(--radius); color:#fff; text-decoration:none; font:700 18px Kanit, sans-serif;
+          background:linear-gradient(135deg,var(--c),#0003 150%); text-shadow:0 1px 3px #0008; }
+.gcard:hover { transform:translateY(-3px); }
+@media (prefers-reduced-motion: reduce) { * { transition:none !important; scroll-behavior:auto !important; } }
+
+/* ---------- 6) การ์ดสินค้า ---------- */
+.grid { display:grid; gap:14px; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); }
+.card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; display:flex; flex-direction:column; }
+.art { position:relative; display:block; aspect-ratio:1/1; overflow:hidden; color:#fff; text-decoration:none; background:#fff; border-bottom:1px solid var(--line); }
+.art img { width:100%; height:100%; object-fit:contain; padding:10px; display:block; }   /* รูปสินค้าแสดงครบทั้งใบ ไม่ถูกตัดขอบ */
+.art .badge { position:absolute; left:8px; bottom:8px; padding:2px 10px; border-radius:999px; background:#000a; font:600 12px Sarabun, sans-serif; }
+.art.big { border:1px solid var(--line); border-radius:var(--radius); } .art.big img { padding:20px; }
+.card .b { padding:10px 12px 12px; display:flex; flex-direction:column; gap:2px; flex:1; }
+.card h3 { font-size:15px; } .card h3 a { text-decoration:none; }
+.price { font:700 18px Kanit, sans-serif; margin:auto 0 6px; padding-top:6px; } .price.xl { font-size:32px; }
+.card .btn { text-align:center; }
+
+/* ---------- 7) กล่อง ตาราง แท็ก ---------- */
+.box { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:18px; margin-bottom:14px; }
+.box h2 { font-size:20px; }
+.tag { display:inline-block; padding:2px 10px; border-radius:999px; background:var(--bg); border:1px solid var(--line); font-size:13px; }
+.tag.ok { color:var(--ok); border-color:var(--ok); }
+.scroll { overflow-x:auto; }
+.tbl { width:100%; border-collapse:collapse; font-size:15px; }
+.tbl th, .tbl td { padding:8px 6px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+.tbl td:last-child, .tbl th:last-child { text-align:right; } .tbl tr.tt td { font-weight:700; }
+.spec { border-collapse:collapse; margin-top:12px; } .spec th, .spec td { text-align:left; padding:4px 16px 4px 0; } .spec th { color:var(--muted); font-weight:400; }
+.crumb { color:var(--muted); font-size:14px; }
+.rows { list-style:none; margin:0; padding:0; } .rows li { display:flex; justify-content:space-between; gap:10px; padding:9px 0; border-bottom:1px solid var(--line); }
+.plain { list-style:none; padding:0; } .plain li { padding:6px 0; }
+.stats .num { font:700 26px Kanit, sans-serif; margin:0; }
+.inl { display:grid; grid-template-columns:1fr auto; gap:4px 16px; margin:0 0 12px; } .inl dd { margin:0; text-align:right; }
+.tt { font:700 18px Kanit, sans-serif; }
+
+/* ---------- 8) ฟอร์ม ---------- */
+.fm { display:grid; gap:12px; } .fm.inline { grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); align-items:end; }
+.fm2 { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+.fm label { display:flex; flex-direction:column; gap:4px; font-size:14px; color:var(--muted); }
+input:not([type=radio]):not([type=checkbox]), select { font:16px Sarabun, sans-serif; padding:10px; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:var(--ink); width:100%; }
+input:user-invalid { border-color:var(--op); }                 /* ช่องที่กรอกผิดรูปแบบขึ้นกรอบแดง */
+.qty { width:72px; }
+fieldset { border:1px solid var(--line); border-radius:8px; margin:14px 0 0; } legend { padding:0 6px; color:var(--muted); font-size:14px; }
+.pay label { display:flex; gap:8px; align-items:center; padding:6px 0; }
+.cartgrid { align-items:start; } .cartgrid .box:last-child { margin-bottom:0; }
+.sum dl { display:grid; grid-template-columns:1fr auto; gap:6px 12px; margin:0 0 14px; } .sum dd { margin:0; text-align:right; }
+.pdp { align-items:start; }
+.ok h1 { color:var(--ok); }
+
+/* ---------- 9) ตัวกรองสินค้าด้วย CSS ล้วน (radio + :has) ---------- */
+.filters { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin:0 0 10px; padding:6px 10px; }
+.chip { border:2px solid var(--line); background:var(--surface); border-radius:999px; padding:5px 16px; font-weight:600; font-size:15px; cursor:pointer; }
+.sr:checked + .chip { background:var(--ink); color:var(--bg); border-color:var(--ink); }
+.sr:focus-visible + .chip { outline:3px solid var(--accent); outline-offset:2px; }
+.shop:has(#g-pk:checked) .card:not(.g-pk){display:none}
+.shop:has(#g-op:checked) .card:not(.g-op){display:none}
+.shop:has(#t-pack:checked) .card:not(.t-pack){display:none}
+.shop:has(#t-deck:checked) .card:not(.t-deck){display:none}
+.empty { display:none; text-align:center; color:var(--muted); margin-top:20px; }
+.shop:has(#g-op:checked):has(#t-deck:checked) .empty { display:block; }
+
+/* ---------- 10) ไทม์ไลน์สถานะพัสดุ และขั้นตอน ---------- */
+.shp { border-top:1px solid var(--line); padding-top:12px; margin-top:12px; } .shp:first-of-type { border:0; margin-top:0; padding-top:0; }
+.tlm { list-style:none; padding:0; margin:10px 0 0; }
+.tlm li { position:relative; padding:4px 0 8px 30px; color:var(--muted); }
+.tlm li::before { content:""; position:absolute; left:4px; top:8px; width:14px; height:14px; border-radius:50%; border:2px solid var(--line); background:var(--surface); }
+.tlm li.on { color:var(--ink); font-weight:600; } .tlm li.on::before { background:var(--accent); border-color:var(--accent); }
+.tlm li.cur::before { box-shadow:0 0 0 4px #2f5bea33; }
+.pills { list-style:none; display:flex; gap:6px; flex-wrap:wrap; padding:0; margin:14px 0 0; }
+.pills li { padding:5px 12px; border-radius:999px; border:1px solid var(--line); font-size:14px; color:var(--muted); }
+.pills li.on { background:var(--accent); border-color:var(--accent); color:#fff; } .pills.sm li { font-size:12px; padding:2px 8px; }
+
+/* ---------- 11) คำถามที่พบบ่อย ---------- */
+details { padding:10px 0; border-bottom:1px solid var(--line); } summary { cursor:pointer; font-weight:600; } details p { margin:6px 0 0; color:var(--muted); }
+
+/* ---------- 12) ส่วนท้าย ---------- */
+footer.site { background:var(--surface); border-top:1px solid var(--line); margin-top:30px; }
+footer .cols { display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); }
+footer h2 { font-size:16px; } footer p { margin:2px 0; color:var(--muted); font-size:15px; } footer a { text-decoration:none; }
+
+/* ---------- 13) พิมพ์ (ใบกำกับภาษี: กด Ctrl + P) ---------- */
+@media print {
+  header.site, footer.site, .noprint { display:none !important; }
+  body { background:#fff; color:#000; } .box { border:0; }
+}

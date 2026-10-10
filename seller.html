@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="LootHuntersTH ตลาดการ์ดสะสม Pokémon และ One Piece">
+<title>แดชบอร์ดผู้ขาย – LootHuntersTH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;700&family=Sarabun:wght@400;600&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">ข้ามไปเนื้อหาหลัก</a>
+<header class="site">
+  <div class="wrap bar">
+    <a class="logo" href="index.html"><img src="images/logo-header.jpg" alt="LootHuntersTH หน้าแรก" width="84" height="46"></a>
+    <input type="checkbox" id="menu" class="sr">
+    <label for="menu" class="burger" aria-label="เปิดเมนู">☰</label>
+    <nav aria-label="เมนูหลัก"><ul><li><a href="shop.html">สินค้า</a></li><li><a href="sell.html" aria-current="page">ขายกับเรา</a></li><li><a href="tracking.html">ติดตามพัสดุ</a></li><li><a href="help.html">ช่วยเหลือ</a></li></ul></nav>
+    <div class="acts"><a class="btn ghost" href="login.html">เข้าสู่ระบบ</a><a class="btn" href="cart.html">ตะกร้า (3)</a></div>
+  </div>
+</header>
+<main id="main">
+
+<div class="wrap"><h1>แดชบอร์ดผู้ขาย</h1><p class="sub">ร้าน LootHuntersTH • ร้านค้า (หน้าจอตัวอย่าง)</p>
+<div class="three stats">
+  <div class="box"><p class="meta">สินค้าในร้าน</p><p class="num">3 รายการ</p></div>
+  <div class="box"><p class="meta">ออเดอร์รอส่ง</p><p class="num">1</p></div>
+  <div class="box"><p class="meta">ยอดที่ถอนได้</p><p class="num">฿2,945.00</p></div></div>
+<section class="box"><h2>ลงสินค้าใหม่</h2>
+  <form class="fm" action="seller.html" method="get"><div class="fm2">
+  <label>เกม<select name="game"><option>Pokémon</option><option>One Piece</option></select></label>
+  <label>ประเภท<select name="type"><option>ซองสุ่ม</option><option>การ์ดเดี่ยว</option><option>สำรับสำเร็จรูป</option><option>อุปกรณ์</option></select></label>
+  <label>ชื่อสินค้า<input name="name" type="text" required></label>
+  <label>ราคา (บาท)<input name="price" type="number" min="1" step="1" required></label>
+  <label>จำนวนสต็อก<input name="stock" type="number" min="0" step="1" required></label>
+  <label>รูปสินค้า (ไม่บังคับ)<input name="image" type="file" accept="image/jpeg,image/png,image/webp"></label></div>
+  <button class="btn" type="submit">ลงสินค้า</button></form></section>
+<section class="box"><h2>สินค้าของร้าน</h2><div class="scroll"><table class="tbl"><thead><tr><th scope="col">สินค้า</th><th scope="col">ราคา</th><th scope="col">สต็อก</th><th scope="col">จัดการ</th></tr></thead><tbody>
+<tr><td>Pokémon Ninja Spinner Box 36 ซอง</td><td>฿2,589</td><td>3</td><td><a href="#">แก้ไข</a> • <a href="#">ลบ</a></td></tr>
+<tr><td>Pokémon Inferno X 1 ซอง</td><td>฿90</td><td>40</td><td><a href="#">แก้ไข</a> • <a href="#">ลบ</a></td></tr>
+<tr><td>OP-024-PRB-01</td><td>฿368</td><td>20</td><td><a href="#">แก้ไข</a> • <a href="#">ลบ</a></td></tr></tbody></table></div></section>
+<section class="box"><h2>ออเดอร์ที่ต้องส่ง</h2>
+  <p><strong>LH3041582277</strong> • Pokémon Ninja Spinner Box 36 ซอง, OP-024-PRB-01<br><span class="meta">ส่งที่ สมชาย ใจดี • 9 ถนนสุขุมวิท กรุงเทพมหานคร 10110</span></p>
+  <form class="fm inline" action="seller.html" method="get">
+    <label>ขนส่ง<select name="carrier"><option>ไปรษณีย์ไทย</option><option>Flash Express</option><option>Kerry Express</option><option>J&amp;T Express</option><option>อื่นๆ</option></select></label>
+    <label>เลขพัสดุ<input name="tracking" type="text" required pattern="[A-Za-z0-9\-]{5,30}" title="ตัวอักษรอังกฤษหรือตัวเลข 5-30 ตัว"></label>
+    <button class="btn" type="submit">ยืนยันส่งพัสดุ</button></form></section>
+<section class="box"><h2>รายได้</h2>
+  <dl class="inl"><dt>ยอดขายที่จัดส่งสำเร็จ</dt><dd>฿3,100.00</dd><dt>ค่าธรรมเนียม 5% (ตัวอย่าง)</dt><dd>−฿155.00</dd><dt class="tt">ยอดสุทธิ</dt><dd class="tt">฿2,945.00</dd></dl>
+  <a class="btn ghost" href="#">ถอนเงิน ฿2,945.00</a></section></div>
+</main>
+<footer class="site">
+  <div class="wrap cols">
+    <section><h2>LootHuntersTH</h2><p><a href="index.html">ตลาดการ์ดสะสมออนไลน์</a></p><p><a href="sell.html">สมัครเป็นผู้ขาย</a></p></section>
+    <section><h2>บัญชี</h2><p><a href="account.html">บัญชีของฉัน</a></p><p><a href="orders.html">ประวัติคำสั่งซื้อ</a></p><p><a href="tracking.html">ติดตามพัสดุ</a></p><p><a href="admin.html">แอดมิน (ตัวอย่าง)</a></p></section>
+    <section><h2>ช่วยเหลือ</h2><p><a href="help.html">คำถามที่พบบ่อย</a></p><p>LINE: @LootHuntersTH</p><p>เปิดทุกวัน 10:00–20:00</p></section>
+  </div>
+</footer>
+</body>
+</html>
